@@ -1,0 +1,8 @@
+.navbar-inverse {
+    background-color: #cc4900;
+    border-color: #006687;
+}
+
+.navbar-inverse .dropdown-menu {
+    background-color: #cc4900;
+}
