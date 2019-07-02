@@ -121,6 +121,36 @@
             @endif
         </div>
     </div>
+
+    <div class="form-group{{ $errors->has('montir') ? ' has-error' : '' }}">
+        {{ Form::label('montir', null, ['class' => 'col-lg-2 control-label']) }}
+        <div class="col-lg-3">
+            {{ Form::text('montir', null, ['class' => 'form-control', 'placeholder' => 'Nama Montir']) }}
+            @if($errors->has('montir'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('montir') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-group{{ $errors->has('layanan') ? ' has-error' : '' }}">
+        {{ Form::label('layanan', null, ['class' => 'col-lg-2 control-label']) }}
+        <div class="col-lg-3">
+            <select name="layanan" class="form-control selectpicker" data-live-search="true" placeholder="Pilih layanan perbaikan...">
+                <option disabled selected>Pilih layanan...</option>
+                <option value="1">Bongkar Pasang</option>
+                <option value="2">Las Ketok</option>
+                <option value="3">Dempul</option>
+                <option value="4">Poles</option>
+            </select>
+            @if($errors->has('layanan'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('layanan') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
     
     {{ Form::hidden('so_transaksi_id', $transaksi->id)}}
     
@@ -174,7 +204,9 @@
                 @foreach($pergantians as $index => $pergantian)
             <tr>
             <th width="8">{{ $index + 1 }}.</th>
-			<td width="100%">{{ $pergantian->keterangan_ganti }}</td>
+            <td width="60%">{{ $pergantian->keterangan_ganti }}</td>
+            <td width="20%">{{ is_null($pergantian->montir) ? 'Tidak ada.' : $pergantian->montir}}</td>
+            <td width="20%">{{ is_null($pergantian->layanan) ? 'Tidak ada.' : $pergantian->jenis_layanan}}</td>
 			<td width="7">
                     {!! Form::open(['route' => ['ganti-part.destroy', $pergantian->id], 'method' => 'delete', 'class' => 'form-inline', 'id' => "delete-form"]) !!}
                     

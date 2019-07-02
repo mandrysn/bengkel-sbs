@@ -47,7 +47,7 @@ class TagihanController extends Controller
         $route = 'tagihan';
         $cari = 'cari-invoice';
 
-        $tagihans = Tagihan::where('deleted', 'N')->orderby('tanggal_masuk', 'asc')->paginate(20);
+        $tagihans = Tagihan::where('deleted', 'N')->orderby('tanggal_masuk', 'desc')->paginate(20);
 		$asuransi  = Asuransi::where('deleted', 'N')->pluck('nama_asuransi', 'id')->all();
 
         return view($route . '.index', compact('title', 'asuransi', 'route', 'cari', 'tagihans'));

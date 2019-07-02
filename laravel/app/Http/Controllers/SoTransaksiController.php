@@ -49,7 +49,7 @@ class SoTransaksiController extends Controller
         $route = 'servis-order';
         $cari = 'cari-so';
         
-        $sot = SoTransaksi::where('status', 2)->where('no_transaksi', 'LIKE', '%-SO%')->orderby('created_at', 'asc')->paginate(20);
+        $sot = SoTransaksi::where('status', 2)->where('no_transaksi', 'LIKE', '%-SO%')->orderby('id', 'desc')->paginate(20);
         
         return view('servis-order.index', compact('title', 'sot', 'cari', 'route'));
     }
@@ -165,12 +165,13 @@ class SoTransaksiController extends Controller
 
         $sot   = SoTransaksi::findOrFail($id);
         $pres = SoDetail::where('status', '0')->where('so_transaksi_id', $id)->get();
-		$details = SoDetail::where('status', '1')->where('so_transaksi_id', $id)->get();
+        $details = SoDetail::where('status', '1')->where('so_transaksi_id', $id)->get();
+        $gantis = ChangePart::where('so_transaksi_id', $id)->get();
         
         $title = 'No. ' . $sot->no_transaksi;
         $route = 'servis-order';
         
-        return view($route . '.show', compact('title', 'sot', 'pres', 'route', 'details'));
+        return view($route . '.show', compact('title', 'sot', 'pres', 'route', 'gantis', 'details'));
     }
 
     /**

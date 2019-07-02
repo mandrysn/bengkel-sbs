@@ -47,7 +47,7 @@ class PreSoController extends Controller
         $cari = 'cari-preso';
         
         $sot = SoTransaksi::where('status', 1)
-                          ->orderby('tanggal_pre', 'asc')
+                          ->orderby('tanggal_pre', 'desc')
                           ->paginate(20);
         
         return view($route . '.index', compact('title', 'sot', 'cari', 'route'));

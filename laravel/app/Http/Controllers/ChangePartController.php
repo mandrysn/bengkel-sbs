@@ -59,12 +59,16 @@ class ChangePartController extends Controller
         }
 
         $this->validate($request, [
-            'keterangan_ganti' => 'required'
+            'keterangan_ganti' => 'required',
+            'montir' => 'required',
+            'layanan' => 'required'
         ]);
         
         ChangePart::firstOrCreate([
             'so_transaksi_id' => $request->so_transaksi_id,
-            'keterangan_ganti' => $request->keterangan_ganti
+            'keterangan_ganti' => $request->keterangan_ganti,
+            'montir' => $request->montir,
+            'layanan' => $request->layanan
         ]);
 
         Session::flash(

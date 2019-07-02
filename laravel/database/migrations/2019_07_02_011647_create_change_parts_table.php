@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSoDetailsTable extends Migration
+class CreateChangePartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSoDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('so_details', function (Blueprint $table) {
+        Schema::create('change_parts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('so_transaksi_id')->unsigned()->index();
-            $table->string('keluhan', 150);
-            $table->string('perbaikan', 150);
-            $table->string('keterangan')->nullable();
-            $table->string('status', ['1', '0'])->default('0'); // 1 dari SPK , 2 dari Unit Lapor
+            $table->integer('so_transaksi_id')->unsigned()->primary('so_transaksi_id');
+            $table->string('keterangan_ganti');
+            $table->string('montir')->nullable();
+            $table->enum('layanan', ['1', '2', '3', '4'])->nullable(); // 1 bongkar pasang, 2 las ketok, 3 dempul, 4 poles
             $table->timestamps();
 
             $table->foreign('so_transaksi_id')
@@ -37,6 +36,6 @@ class CreateSoDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('so_details');
+        Schema::dropIfExists('change_parts');
     }
 }

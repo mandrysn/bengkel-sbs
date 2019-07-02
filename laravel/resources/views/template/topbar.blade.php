@@ -12,9 +12,26 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
 
-                            {{--$row = BarangMasuk::belumLengkap()->get();
-                            $gr = $row->count() > 0 ? "btn-success" :""; --}}
-                            
+                            <li class="dropdown" >
+                                <a href="#" class="dropdown-toggle" title="Notifikasi Unit Lapor Yang Belum Di Proses" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ \App\Helpers\Helper::countNotifikasi() }} &nbsp;<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a>
+                                
+                                <ul class="listitems dropdown-menu " >
+                                @if (\App\Helpers\Helper::countNotifikasi() == 0)
+                                    <li><a href="#">Tidak ada notifikasi</a></li>
+                                @else
+
+                                @php
+                                $n = \App\SoTransaksi::where('status', 1)->orderBy('tanggal_pre','desc')->limit(10)->get();
+                                @endphp
+                                @foreach ($n as $item)
+                                    
+                                    <li data-position="{{ $item->tanggal_pre }}"><a href="{{ URL('pre-so/' . $item->id) }}">Permintaan Nomor {{ $item->no_transaksi }}</a></li>
+                                @endforeach
+                                                
+                                @endif       
+                                </ul>
+                                
+                            </li>
                         
                         <li><a href="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Beranda</a></li>
                         <li class="dropdown">

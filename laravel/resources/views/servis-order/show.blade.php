@@ -91,7 +91,6 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Keluhan</th>
                             <th>Perbaikan</th>
                             <th>Keterangan</th>
@@ -101,13 +100,30 @@
                         @foreach($details as $index => $data)
                         
                         <tr>
-                            <td>{{ $index + 1 }}</td>
                             <td>{{ $data->keluhan }}</td>
                             <td>{{ $data->perbaikan }}</td>
-                            <td>{{ $data->keterangan }}</td>
+                            <td>{{ $data->keterangan }}<br /></td>
                             
                         </tr>
+                        @endforeach
+                    </tbody>
+
+                    <thead>
+                        <tr>
+                            <th>Montir</th>
+                            <th>Layanan</th>
+                            <th>Keterangan Ganti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         
+                        @foreach($gantis as $ganti)
+                        <tr>
+                            <td>{{ is_null($ganti->montir) ? 'Tidak ada' : $ganti->montir }}<br />
+                            <td>{{ is_null($ganti->layanan) ? 'Tidak ada' : $ganti->jenis_layanan }}</td>
+                            <td>{{ $ganti->keterangan_ganti }} </td>
+                            
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

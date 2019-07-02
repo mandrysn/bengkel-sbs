@@ -192,13 +192,13 @@
             </div>
 			
 
-            <div class="col-md-6" style="margin-top: -30px">
+            <div class="col-md-6" style="margin-top: -30px;">
 					<h4><center>MOHON FOTO EPOXY</center></h4>
                     <h5>Pergantian Part</h5>
 
-                    <table class="table">
+                    <table class="table" style="line-height: 1.1em;">
 					@foreach($gantis as $index => $data)
-                        <tr><th>{{ $index + 1 }}.</th><td>{{ $data->keterangan_ganti }}</td></tr>
+                        <tr><th>{{ $index + 1 }}.</th><td>{{ $data->keterangan_ganti }}, <strong>{{ is_null($data->montir) ? '-' : $data->montir }}</strong>, {{ is_null($data->layanan) ? '-' : $data->jenis_layanan }}</td></tr>
 					@endforeach
                     </table>
     

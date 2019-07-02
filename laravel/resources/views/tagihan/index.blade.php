@@ -48,6 +48,7 @@
                         <th>Merek / Type Kendaraan</th>
                         <th>Nomor Polisi</th>
                         <th>Asuransi</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -62,6 +63,7 @@
                             <td>{{ $data->sotransaksi->sokendaraan->merek->nama_merek }} / {{ $data->sotransaksi->sokendaraan->merek->unit_merek }}</td>
                             <td>{{ $data->sotransaksi->sokendaraan->no_polisi }}</td>
                             <td>{{ $data->sotransaksi->asuransi_id == '0' ? 'Tidak ada data' : $data->sotransaksi->asuransi->nama_asuransi }}</td>
+                            <td>{{ is_null($data->jumlah_or) ? 'Belum Bayar' : 'Sudah Bayar' }}</td>
                             <td>
                                 @include('template.aksi')
                             </td>
