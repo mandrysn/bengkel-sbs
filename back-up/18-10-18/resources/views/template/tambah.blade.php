@@ -1,0 +1,1 @@
+                <a href="{{ route($route.'.create') }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah Data</a>
