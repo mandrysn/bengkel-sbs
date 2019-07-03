@@ -8,7 +8,7 @@
             @include('template.form_pencarian')
             
             <p></p>
-            <table class="table table-bordered table-hover">
+            <table id="example1" class="table display table-bordered table-hover">
                 <thead>
                     <tr>
                         <th width="2%">No</th>
