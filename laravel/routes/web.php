@@ -36,15 +36,18 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('suplier', 'SuplierController');
 
     Route::resource('cari-preso', 'CariController');
+    Route::get('pre-so/cari/asuransi', 'PreSoController@cariAsuransi')->name('pre-so.cari.asuransi');
+    Route::get('pre-so/cari/pelanggan', 'PreSoController@cariPelanggan')->name('pre-so.cari.pelanggan');
     Route::resource('pre-so', 'PreSoController');
     Route::resource('so-detail', 'SoDetailController');
     Route::resource('rekap-preso', 'RekapController');
     Route::resource('print-preso', 'PrintController');
 
     Route::resource('cari-so', 'CariController');
-    Route::resource('servis-order', 'SoTransaksiController');
     Route::resource('rekap-so', 'RekapController');
     Route::resource('print-so', 'PrintController');
+    Route::get('servis-order/cari/spk', 'SoTransaksiController@cariSpk')->name('servis-order.cari.spk');
+    Route::resource('servis-order', 'SoTransaksiController');
 
     Route::resource('ganti-part', 'ChangePartController');
 

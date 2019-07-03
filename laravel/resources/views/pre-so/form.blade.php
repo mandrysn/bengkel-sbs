@@ -13,21 +13,16 @@
                         <div class="form-group{{ $errors->has('so_kendaraan_id') ? ' has-error' : '' }}">
                             {{ Form::label('pelanggan', null, ['class' => 'col-lg-2 control-label']) }}
                             <div class="col-lg-3">
-                                <select name="so_kendaraan_id" class="form-control selectpicker" data-live-search="true" placeholder="Pilih kendaraan pelanggan unit...">
-                                    <option disabled selected>Pilih kendaraan pelanggan...</option>
-                                    @foreach ( $kendaraan as $key => $attr )
-                                    <optgroup label="{{ $key }}">
-                                        @foreach ( $attr as $pelanggan => $values )
-                                        <option value="{{ $pelanggan }}">{{ $values }}</option>
-                                        @endforeach
-                                    </optgroup>
-                                    @endforeach
-                                </select>
+                                {{ Form::text('nama_pelanggan', null, ['class' => 'form-control', 'placeholder' => 'Masukkan Kata Kunci', 'id' => 'data_pelanggan', 'readonly']) }}
+                                {{ Form::hidden('so_kendaraan_id', null, ['id' => 'so_kendaraan_id']) }}
                                 @if($errors->has('so_kendaraan_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('so_kendaraan_id') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="javascript:void(0);" class="btn btn-default" name="Pencarian Pelanggan" title="SBS - Pencarian Pelanggan" onClick='javascript:window.open("{{ route('pre-so.cari.pelanggan') }}", "Ratting", "width=950,height=370,toolbar=1,status=1,");'>Cari</a>
                             </div>
                         </div>
 
@@ -46,8 +41,17 @@
 					<div class="form-group">
                         {{ Form::label('nama_asuransi', null, ['class' => 'col-lg-2 control-label']) }}
                         <div class="col-lg-3">
-                            {{ Form::select('asuransi_id', $asuransi, null, ['class' => 'form-control selectpicker', 'placeholder' => 'Pilih asuransi...', 'data-live-search' => 'true']) }}
+                            {{ Form::text('nama_asuransi', null, ['class' => 'form-control', 'placeholder' => 'Masukkan Kata Kunci', 'id' => 'data_asuransi', 'readonly']) }}
+                            {{ Form::hidden('asuransi_id', null, ['id' => 'asuransi_id']) }}
+                                @if($errors->has('so_kendaraan_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('so_kendaraan_id') }}</strong>
+                                    </span>
+                                @endif
                         </div>
+                        <div class="col-lg-1">
+                                <a href="javascript:void(0);" class="btn btn-default" name="Pencarian Asuransi" title="SBS - Pencarian Asuransi" onClick='javascript:window.open("{{ route('pre-so.cari.asuransi') }}", "Ratting", "width=950,height=370,toolbar=1,status=1,");'>Cari</a>
+                            </div>
                     </div>
                         
                 <div class="form-group">

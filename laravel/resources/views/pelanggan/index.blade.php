@@ -19,7 +19,6 @@
                         <th>Nama Pelanggan</th>
                         <th>Alamat Pelanggan</th>
                         <th>Kontak Pelanggan</th>
-                        {{--<th>Asuransi Pelanggan</th>--}}
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -31,7 +30,6 @@
                             <td>{{ $data->nama_pelanggan }}</td>
                             <td>{{ $data->alamat_pelanggan }}</td>
                             <td>{{ $data->no_telpon_pelanggan }}</td>
-								{{--<td>{{ $data->asuransi->nama_asuransi }}</td>--}}
                             <td>@include('template.aksi-i')</td>
                         </tr>
                     @endforeach

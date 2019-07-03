@@ -92,18 +92,8 @@ class SoTransaksiController extends Controller
             $add = $cari + 1;
         }
         $kode = 'SBS' . date('Y') . '-SO' . sprintf("%04s", $add);
-
-        $result      = SoTransaksi::where('status', 1)->orderBy('id', 'ASC')->get();
-        $pre_so      = [];
-        foreach ( $result as $v ) {
-            if ( !isset($pre_so[$v->sokendaraan->sopelanggan->nama_pelanggan]) ) {
-                $pre_so[$v->sokendaraan->sopelanggan->nama_pelanggan] = [];
-            }
-            $pre_so[$v->sokendaraan->sopelanggan->nama_pelanggan][$v->id] = $v->no_transaksi . ' - ' . $v->sokendaraan->no_polisi;
-            $bid[$v->sokendaraan->sopelanggan->nama_pelanggan][$v->id] = $v->id;
-        }
         
-        return view('template.create', compact('title', 'button', 'kode', 'route', 'pre_so'));
+        return view('template.create', compact('title', 'button', 'kode', 'route'));
     }
 
     /**
@@ -315,12 +305,13 @@ class SoTransaksiController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function pdfview($id)
+    public function cariSpk()
     {
-		//
+        $sot = SoTransaksi::where('status', 1)->orderBy('id', 'ASC')->get();
+        return view('servis-order.cari-spk', compact('sot'));
     }
 }

@@ -10,6 +10,7 @@
                     <a class="navbar-brand" href="{{ url('/') }}">Sistem Transaksi Bengkel</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    @if(Request::segment(2) != 'cari')
                     <ul class="nav navbar-nav navbar-right">
 
                             <li class="dropdown" >
@@ -56,5 +57,6 @@
                             </ul>
                         </li>
                     </ul>
+                    @endif
                 </div>
             </div>

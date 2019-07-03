@@ -10,27 +10,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             {{ Form::label('nomor_pre_so', null, ['class' => 'col-lg-2 control-label']) }}
                             <div class="col-lg-3">
-                                <select name="id" class="form-control selectpicker" data-live-search="true" placeholder="Pilih merek unit...">
-                                    <option disabled selected>Pilih nomor pre servis order...</option>
-                                    @foreach ( $pre_so as $key => $attr )
-                                    <optgroup label="{{ $key }}">
-                                        @foreach ( $attr as $bid => $values )
-                                        <option value="{{ $bid }}">{{ $values }}</option>
-                                        @endforeach
-                                    </optgroup>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('id') }}</strong>
-                                    </span>
-                                @endif
+                                {{ Form::text('nomor_pelanggan', null, ['class' => 'form-control', 'placeholder' => 'Masukkan Kata Kunci', 'id' => 'data_pelanggan', 'readonly']) }}
+                                {{ Form::hidden('id', null, ['id' => 'id_pelanggan']) }}
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="javascript:void(0);" class="btn btn-default" name="Pencarian SPK" title="SBS - Pencarian SPK" onClick='javascript:window.open("{{ route('servis-order.cari.spk') }}", "Ratting", "width=950,height=370,toolbar=1,status=1,");'>Cari</a>
                             </div>
                         </div>
-
+                        
                         <div class="form-group{{ $errors->has('tanggal_so') ? ' has-error' : '' }}">
                             {{ Form::label('tanggal_masuk', null, ['class' => 'col-lg-2 control-label']) }}
                             <div class="col-lg-3">

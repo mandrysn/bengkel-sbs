@@ -9,6 +9,8 @@
 
         <title>Aplikasi Inventory</title>
 
+        <link rel="shortcut icon" type="image/x-icon" href="{{{ asset('admin/images/inventory.png') }}}">
+
         <!-- CSS 16-->
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/bootstrap/css/font-awesome.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/bootstrap/theme/16/bootstrap.min.css') }}">

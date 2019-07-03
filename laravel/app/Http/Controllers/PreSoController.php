@@ -90,19 +90,9 @@ class PreSoController extends Controller
             $add = $cari + 1;
         }
         $kode = 'SBS' . date('Y') . '-PreSO' . sprintf("%04s", $add);
+        
 
-		$asuransi  = Asuransi::where('deleted', 'N')->pluck('nama_asuransi', 'id')->all();
-        $result      = SoKendaraan::where('deleted', 'N')->orderBy('id', 'asc')->get();
-        $kendaraan   = [];
-        foreach ( $result as $v ) {
-            if ( !isset($kendaraan[$v->no_polisi]) ) {
-                $kendaraan[$v->no_polisi] = [];
-            }
-            $kendaraan[$v->sopelanggan->nama_pelanggan][$v->id] = $v->no_polisi;
-            $pelanggan[$v->sopelanggan->nama_pelanggan][$v->id] = $v->id;
-        }
-
-        return view('template.create', compact('title', 'asuransi', 'button', 'kode', 'route', 'kendaraan'));
+        return view('template.create', compact('title', 'button', 'kode', 'route'));
     }
 
     /**
@@ -298,5 +288,29 @@ class PreSoController extends Controller
     public function cari(Request $request)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cariPelanggan()
+    {   
+        $pelanggan = SoKendaraan::where('deleted', 'N')->orderBy('id', 'asc')->get();
+        
+        return view('pre-so.cari-pelanggan', compact('pelanggan'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cariAsuransi()
+    {   
+        $asuransi = Asuransi::where('deleted', 'N')->get();
+        
+        return view('pre-so.cari-asuransi', compact('asuransi'));
     }
 }
